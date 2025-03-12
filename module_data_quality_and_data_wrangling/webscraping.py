@@ -22,18 +22,18 @@ start = pd.Timestamp(yesterday, tz = "UTC")
 end = pd.Timestamp(yesterday+'T2359', tz = "UTC")
 # choose Germany
 country_code = "DE"
-# method returns wind an solar forecast
+# method returns wind and solar forecast
 response_entsoe = client_enstoe.query_wind_and_solar_forecast(
-    country_code=country_code,
-    start=start, end=end,
+    country_code = country_code,
+    start = start, end = end,
     psr_type = None
 )
 # transform index to column
-df_entsoe = response_entsoe.reset_index(names="timestamp")
+df_entsoe = response_entsoe.reset_index(names = "timestamp")
 # transform data frame to long format
 df_entsoe_long = pd.melt(df_entsoe,
-                  id_vars=["timestamp"], 
-                  value_vars=df_entsoe.columns[1:])
+                  id_vars = ["timestamp"], 
+                  value_vars = df_entsoe.columns[1:])
 df_entsoe["unit"] = "MW"
 print(df_entsoe.head())
 # load package
