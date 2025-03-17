@@ -34,8 +34,8 @@ df_entsoe = response_entsoe.reset_index(names = "timestamp")
 df_entsoe_long = pd.melt(df_entsoe,
                   id_vars = ["timestamp"], 
                   value_vars = df_entsoe.columns[1:])
-df_entsoe["unit"] = "MW"
-print(df_entsoe.head())
+df_entsoe_long["unit"] = "MW"
+print(df_entsoe_long.head())
 # load package
 import h5py
 
